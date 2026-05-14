@@ -43,3 +43,24 @@ kubectl get pod deploy-abcde -o jsonpath='{.spec.containers[*].name}'
    50  git branch -M main
    51  git remote add origin https://github.com/lankesh-koppisetti/K8s.git
    52  git push -u origin main
+
+
+
+kops cluster deletion
+-----
+kOps cannot find your cluster state store.
+kOps stores cluster configuration in:
+Amazon Web Services S3 bucket
+So before deleting cluster, you must set:
+
+aws s3 ls
+export KOPS_STATE_STORE=s3://lankeshbucket
+--
+verify state store
+
+echo $KOPS_STATE_STORE
+kops delete cluster --name lankesh.k8s.local --yes
+--
+verify cluster
+--
+kops get cluster
