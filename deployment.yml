@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: movie
+  template:
+    metadata:
+      name: lankesh
+      labels:
+        app: movie
+    spec:
+      containers:
+        - name: rscont
+          image: lankesh33/myapp:movie
+          ports:
+            - containerPort: 80

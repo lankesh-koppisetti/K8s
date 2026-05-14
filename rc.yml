@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myrs
+spec:
+  replicas: 3
+  selector:
+    app: zomato
+  template:
+    metadata:
+      name: lankesh
+      labels:
+        app: zomato
+    spec:
+      containers:
+        - name: rscont
+          image: lankesh33/myapp:bus
+          ports:
+            - containerPort: 80
